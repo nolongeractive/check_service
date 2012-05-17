@@ -8,13 +8,13 @@ for port in 22 6776
     if telnet 127.0.0.1 $port < /dev/null 2>&1 |grep -q Connected;
       then echo "port: $port Connected at $time." >> "$service";
     else 
-      echo "port: $port Disconnected at $time." >> "$service";
-      message="Port: $port Disconnected at $time.";
-      email="pak@onemore.com.hk";
-      echo -e "To: $email" > $tmp;
-      echo -e "From: $email" >> $tmp;
-      echo -e "Subject: $message">>$tmp;
-      echo -e "Body: $message">>$tmp;
-      sendmail -t < $tmp;
+       echo "port: $port Disconnected at $time." >> "$service";
+       message="Port: $port Disconnected at $time.";
+       email="pak@onemore.com.hk";
+       echo -e "To: $email" > $tmp;
+       echo -e "From: $email" >> $tmp;
+       echo -e "Subject: $message">>$tmp;
+       echo -e "Body: $message">>$tmp;
+       sendmail -t < $tmp;
     fi
 done
