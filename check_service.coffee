@@ -1,9 +1,9 @@
 net = require 'net'
 fs = require 'fs'
-mail = require 'mailer'
+email = require 'mailer'
 
 server = ["demo.1pm.com.hk"]
-port = [80]
+port = [6226]
 log_path = "/tmp/check_service.log"
 time = new Date()
 
@@ -19,18 +19,26 @@ for servers in server
       log.write(message)
       connection.end()
 
-      mail.send(
-        host : "smtp.gmail.com"
-        port : "587"
-        ssl : true
-        domain : "playmore.com.hk"
-        to : "pak@onepm.com.hk"
-        from : "lucille@playmore.com.hk"
-        subject : "Service Error"
-        body: "#{message}"
-        authentication: "login"
-        username: "Y2hlY2VydmljZS5sb2dAZ21haWwuY29t"
-        password: "b25lcG1sdGQ=")
+      i = 0
+
+      while i < 1
+        email.send
+          ssl: true
+          host: "smtp.gmail.com"
+          port: 465
+          domain: "[127.0.0.1]"
+          to: "lucille@playmore.com.hk"
+          from: "lucille@playmore.com.hk"
+          subject: "Service Error - #{servers}:#{ports}"
+          reply_to: "lucille@playmore.com.hk"
+          body: "#{message}"
+          authentication: "login"
+          username: "check.service.log@gmail.com"
+          password: "onepmltd"
+          debug: true
+        , (err, result) ->
+          console.log err  if err
+        i++
 
     connection.on 'connect', () ->
       message = "***TRY*** #{servers}:#{ports} - Connecting on #{time}.\n"
