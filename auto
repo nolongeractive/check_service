@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+git config --global user.name "Lucille"
+git config --global user.email harpistlucille@gmail.com
+      
+# mkdir check_service_coffee
+# cd check_service_coffee
+git init
+touch README
+git add .
+git commit -m '~'
+git remote add origin git@github.com:HarpistLucille/check_service.git
+git push -u origin master
+      
+cd existing_git_repo
+git remote add origin git@github.com:HarpistLucille/check_service.git
+git push -u origin master
