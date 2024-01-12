@@ -2,7 +2,7 @@ net = require 'net'
 fs = require 'fs'
 email = require 'mailer'
 
-server = ["demo.1pm.com.hk"]
+server = ["xxx@xxx.com]
 port = [6226]
 log_path = "/tmp/check_service.log"
 time = new Date()
