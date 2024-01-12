@@ -27,14 +27,14 @@ for servers in server
           host: "smtp.gmail.com"
           port: 465
           domain: "[127.0.0.1]"
-          to: "lucille@playmore.com.hk"
-          from: "lucille@playmore.com.hk"
+          to: "xxx@xxx.com"
+          from: "xxx@xxx.com"
           subject: "Service Error - #{servers}:#{ports}"
-          reply_to: "lucille@playmore.com.hk"
+          reply_to: "xxx@xxx.com"
           body: "#{message}"
           authentication: "login"
-          username: "check.service.log@gmail.com"
-          password: "onepmltd"
+          username: "xxx@xxx.com
+          password: "xxx"
           debug: true
         , (err, result) ->
           console.log err  if err
